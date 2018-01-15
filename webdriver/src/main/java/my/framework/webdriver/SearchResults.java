@@ -37,10 +37,12 @@ public class SearchResults extends LoadableComponent<SearchResults> {
 public List<String> getProducts(){
 		
 		List<String> products = new ArrayList<>();
-		List<WebElement> productList = driver.findElements(By.xpath("//*[@id='s-results-list-atf']//li"));
+		List<WebElement> productList = driver.findElements(By.cssSelector("#s-results-list-atf > li"));
 		
 		for (WebElement item : productList) {
-			products.add(item.findElement(By.cssSelector("a > h2")).getText());
+			products.add(item.findElement
+					(By.tagName("h2"))
+					.getText());
 		}
 		return products;
 	}

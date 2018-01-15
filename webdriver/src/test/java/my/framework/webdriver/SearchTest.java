@@ -1,6 +1,5 @@
 package my.framework.webdriver;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -15,6 +14,7 @@ public class SearchTest {
 
 	private WebDriver driver;
 
+
 	@Before
 	public void init() {
 
@@ -28,10 +28,11 @@ public class SearchTest {
 
 		HomePage homePage = new HomePage(driver);
 		homePage.load();
-        SearchResults searchResult = homePage.search().searchInStore("backpacks");
-		assertEquals(51, searchResult.getProducts().size());
+        SearchResults searchResult = homePage.search().searchInStore("fishing rods");
+		assertTrue(searchResult.getProducts().size()>0);
 		assertTrue(searchResult.getProducts().contains(
-				"High Sierra Loop Backpack"));
+				"Ugly Stik Elite Spinning Rod"));
+		
 
 	}
 
